@@ -1,0 +1,20 @@
+.flip-container {
+  	perspective: 1000px;
+}
+
+.flip {
+	transform-style: preserve-3d;
+}
+
+.flipper {
+	transform: rotateY(180deg);
+}
+
+.back-img {
+	transform: rotateY(180deg);
+}
+
+.front-img, .back-img {
+  	backface-visibility: hidden;
+}
+
