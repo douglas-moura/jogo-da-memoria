@@ -5,12 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="./src/assets/css/output.css" rel="stylesheet">
 		<link href="./src/assets/css/base.css" rel="stylesheet">
-		<title></title>
+		<title>Jogo da Memória</title>
 	</head>
 	<body class="bg-yellow-400 font-quicksand">
-		<main class="flex min-h-screen p-8 relative justify-center items-center">
+		<main class="flex min-h-screen p-8 relative justify-center items-center md:h-4/5 md:w-3/4 md:mx-auto">
 			<button type="submit" onclick="iniciarJogo()" class="z-20 w-32 font-extrabold py-4 px-6 bg-white shadow-2xl rounded-lg m-auto absolute active:bg-gray-300">Começar</button>
-			<section id="quadro-jogo" class="w-full z-30 p-4 rounded-lg shadow-md hidden transition bg-yellow-200 transform quadro-oculto">
+			<section id="quadro-jogo" class="quadro-oculto w-full z-30 p-4 rounded-lg shadow-md hidden transition bg-yellow-200 transform">
 				<div class="flex justify-between">
 					<strong><span id="tempo" class="flex mb-6 text-base">Tempo: 00:00</span></strong>
 					<strong><span id="pontos">Pontos: 0.000</span></strong>
@@ -22,8 +22,8 @@
 			<section id="blocoParabens" class="z-50 fixed bloco-parabens-oculto hidden transition flex-col bg-white w-60 aspect-square p-8 text-center rounded-2xl shadow-2xl">
 				<h1 class="text-4xl font-extrabold mb-16">Parabéns</h1>
 			</section>
-			<div id="pelicula" class="z-40 absolute hidden transition bg-black top-0 left-0 opacity-80 w-screen h-screen"></div>
 		</main>
+		<div id="pelicula" class="z-40 absolute hidden transition bg-black top-0 left-0 opacity-80 w-screen h-screen"></div>
 		<script src="./src/js/main.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>
