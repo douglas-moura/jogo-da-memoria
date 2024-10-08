@@ -22,9 +22,10 @@ Um jogo da memória inspirado no famoso anime e mangá **One Piece**. Neste jogo
 1. Clone este repositório ou baixe o ZIP.
   ```bash
   git clone https://github.com/douglas-moura/jogo-da-memoria.git
-3. Abra o arquivo `index.html` em um navegador.
-4. Clique nas cartas para revelá-las e tente encontrar os pares.
-5. O jogo termina quando todos os pares forem encontrados.
+  ```
+2. Abra o arquivo `index.html` em um navegador.
+3. Clique nas cartas para revelá-las e tente encontrar os pares.
+4. O jogo termina quando todos os pares forem encontrados.
 
 ## Contribuição
 Sinta-se à vontade para contribuir! Para isso, siga as etapas abaixo:
@@ -33,12 +34,15 @@ Sinta-se à vontade para contribuir! Para isso, siga as etapas abaixo:
 2. Crie uma branch para sua feature
   ```bash
   git checkout -b minha-nova-feature
+  ```
 3. Faça suas alterações e commit.
   ```bash
   git commit -m 'Adiciona nova feature'
+  ```
 4. Push para a branch.
   ```bash
   git push origin minha-nova-feature
+  ```
 5. Abra um Pull Request.
 
 ## Instalação
