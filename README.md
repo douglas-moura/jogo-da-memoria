@@ -2,14 +2,14 @@
 
 ## Descrição
 
-O Jogo da Memória é um jogo clássico que desafia a memória dos jogadores. O objetivo é encontrar e combinar pares de cartas idênticas. Este projeto é uma implementação simples do jogo utilizando HTML, CSS e JavaScript.
+Um jogo da memória inspirado no famoso anime e mangá **One Piece**. Neste jogo, os jogadores devem encontrar pares de cartas que apresentam personagens e elementos do universo de One Piece. Este projeto foi criado para aprimorar habilidades de programação e proporcionar diversão aos fãs da série.
 
 ## Funcionalidades
 
-- Jogo interativo com um design responsivo.
-- Cartas que viram ao serem clicadas, revelando seu conteúdo.
-- Sistema de verificação para determinar se as cartas selecionadas formam um par.
-- Contador de tentativas e reinício do jogo ao final.
+- Interface amigável e responsiva.
+- Contador de pontuação para rastrear o desempenho do jogador.
+- Temporizador para desafios adicionais.
+- Cartas com imagens de jollyrogers do personagens icônicos de One Piece.
 
 ## Tecnologias Utilizadas
 
@@ -20,9 +20,26 @@ O Jogo da Memória é um jogo clássico que desafia a memória dos jogadores. O 
 ## Como Jogar
 
 1. Clone este repositório ou baixe o ZIP.
-2. Abra o arquivo `index.html` em um navegador.
-3. Clique nas cartas para revelá-las e tente encontrar os pares.
-4. O jogo termina quando todos os pares forem encontrados.
+  ```bash
+  git clone https://github.com/douglas-moura/jogo-da-memoria.git
+3. Abra o arquivo `index.html` em um navegador.
+4. Clique nas cartas para revelá-las e tente encontrar os pares.
+5. O jogo termina quando todos os pares forem encontrados.
+
+## Contribuição
+Sinta-se à vontade para contribuir! Para isso, siga as etapas abaixo:
+
+1. Fork o repositório.
+2. Crie uma branch para sua feature
+  ```bash
+  git checkout -b minha-nova-feature
+3. Faça suas alterações e commit.
+  ```bash
+  git commit -m 'Adiciona nova feature'
+4. Push para a branch.
+  ```bash
+  git push origin minha-nova-feature
+5. Abra um Pull Request.
 
 ## Instalação
 
