@@ -31,7 +31,7 @@ export default function App() {
                 </View>
                 <View style={styles.gradeContainer}>
                     {grade.map((quadro) => (
-                        <Pressable key={quadro.getId()} onPress={() => {
+                        <Pressable style={styles.quadroContainer} key={quadro.getId()} onPress={() => {
                             // !quadro.getAberto() se for verdadeiro, então este quadro já foi encontrado com seu par
                             // !stage2 se verdadeiro, significa que ainda há um checagem em pendente
                             if (quadro.getAberto() == false && stage2 == null) {
@@ -104,4 +104,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap', // permite quebra de linha
         justifyContent: 'space-between',
     },
+    quadroContainer: {
+        width: '23.5%'
+    }
 })
