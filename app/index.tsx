@@ -1,22 +1,34 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useState, useEffect } from 'react'
 import Menu from './menu'
 import ClassePartida from '../class/ClassePartida'
 import Quadro from '../assets/components/Quadro'
+import numToTime from '../assets/functions/numToTime'
 
 const p1 = new ClassePartida
 
+
 export default function App() {
+    const [tempo, setTempo] = useState(0)
+    const [grade, setGrade] = useState(p1.gerarGrade())
+    
+    useEffect(() => {
+        setTimeout(() => {
+            setTempo(tempo + 1)
+        }, 100)
+    }, [tempo])
+
     return (
         <SafeAreaView style={[styles.container, { flex: 1 }]} edges={['top', 'bottom']}>
             {/*<Menu />*/}
             <View style={styles.jogoContainer}>
                 <View style={styles.partidaInfosContainer}>
-                    <Text style={styles.infosTexto}>Tempo: 00:00</Text>
-                    <Text style={styles.infosTexto}>Pontos: {p1.cronometro()}</Text>
+                    <Text style={styles.infosTexto}>Tempo: {numToTime(tempo)}</Text>
+                    <Text style={styles.infosTexto}>Pontos: </Text>
                 </View>
                 <View style={styles.gradeContainer}>
-                    {p1.gerarGrade().map((quadro) => (
+                    {grade.map((quadro) => (
                         <Quadro key={quadro.id} img={quadro.img} />
                     ))}
                 </View>

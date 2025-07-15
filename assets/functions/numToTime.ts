@@ -1,17 +1,12 @@
-import { Float } from "react-native/Libraries/Types/CodegenTypes"
-
-export default function numToTime(num: number): string {
+export default function numToTime(t: number): string {
     // código para converter numero em formato de tempo
     // código de terceiros
 
-    let hours: Float = Math.floor(num / 60)
-    let minutes: Float = num % 60
+    let s: number = t % 60
+    let m: number = t / 60 >= 1 ? Math.floor(t / 60) : 0
 
-    let nMinutes: string = '00'
-    let nHours: string = '00'
-
-    if (minutes + "".length < 10) nMinutes = "0" + minutes.toString()
-    if (hours + "".length < 10) nHours = "0" + hours.toString()
-    
-    return nHours + ":" + nMinutes
+    let segundos: string = s < 10 ? "0" + s.toString() : s.toString()
+    let minutos: string = m < 10 ? "0" + m.toString() : m.toString()
+  
+    return minutos + ":" + segundos
 }
