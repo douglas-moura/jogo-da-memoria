@@ -1,14 +1,21 @@
 import { View, Image, StyleSheet } from "react-native"
 import imagens from "../functions/imagensRequire"
+import ClasseQuadro from "../../class/ClasseQuadro"
 
 type Props = {
-    img: string | null
+    quadroInfos: ClasseQuadro
 }
 
-export default function Quadro({ img }: Props) {
+export default function Quadro({ quadroInfos }: Props) {
     return (
         <View style={styles.quadroContainer}>
-            <Image source={img ? imagens[img] : require('../img/images.png')} style={styles.img} />
+            <Image style={styles.img}
+                source={
+                    quadroInfos.getCodImg() && quadroInfos.getVisivel() ?
+                    imagens[quadroInfos.getCodImg()] :
+                    require('../img/back.jpg')
+                }
+            />
         </View>
     )
 }
@@ -16,7 +23,7 @@ export default function Quadro({ img }: Props) {
 const styles =  StyleSheet.create({
     quadroContainer: {
         marginVertical: 4,
-        width: '23%',
+        width: '100%',
         backgroundColor: '#fff',
         borderRadius: 8,
         overflow: 'hidden',
@@ -26,7 +33,7 @@ const styles =  StyleSheet.create({
     },
     img: {
         margin: 'auto',
-        height: 80,
+        height: 70,
         marginVertical: 4,
         aspectRatio: 1,
         borderWidth: 0,

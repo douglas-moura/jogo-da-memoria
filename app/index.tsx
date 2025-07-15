@@ -8,16 +8,18 @@ import numToTime from '../assets/functions/numToTime'
 
 const p1 = new ClassePartida
 
-
 export default function App() {
     const [tempo, setTempo] = useState(0)
     const [grade, setGrade] = useState(p1.gerarGrade())
-    
+    const [stage1, setStage1] = useState<number | null>(null)
+    const [stage2, setStage2] = useState<number | null>(null)
+    const [acertos, setAcertos] = useState(p1.getAcerto())    
+
     useEffect(() => {
         setTimeout(() => {
             setTempo(tempo + 1)
-        }, 100)
-    }, [tempo])
+        }, 1000)
+    }, [tempo, stage1, stage2])
 
     return (
         <SafeAreaView style={[styles.container, { flex: 1 }]} edges={['top', 'bottom']}>
@@ -29,7 +31,46 @@ export default function App() {
                 </View>
                 <View style={styles.gradeContainer}>
                     {grade.map((quadro) => (
-                        <Quadro key={quadro.id} img={quadro.img} />
+                        <Pressable key={quadro.getId()} onPress={() => {
+                            // !quadro.getAberto() se for verdadeiro, então este quadro já foi encontrado com seu par
+                            // !stage2 se verdadeiro, significa que ainda há um checagem em pendente
+                            if (quadro.getAberto() == false && stage2 == null) {
+                                // se verdadeiro, o stage 1 esta ocupado e o stage 2 estiver disponível
+                                if (stage1 != null && stage2 == null) {
+                                    // segunda imagem
+                                    // se a imagem do quadro for igual a do stage porém com número de ID diferentes
+                                    if (quadro.getCodImg() == grade[stage1].getCodImg() && quadro.getId() != grade[stage1].getId()) {
+                                        // acerto
+                                        // define ambos os quadros como resolvidos
+                                        quadro.setAberto()
+                                        if (stage1) grade[stage1].setAberto()
+                                        // libera o stage um para inciar uma nova comparação
+                                        setStage1(null)
+                                    } else {
+                                        // erro
+                                        // insere o segundo quadro no stage 2 para impedir um terceiro clique durante esta comparação
+                                        setStage2(quadro.getId())
+                                        setTimeout(() => {
+                                            // oculta novamente as duas imagens diferentes
+                                            quadro.virarImagem()
+                                            if (stage1) grade[stage1].virarImagem()
+                                            // libera amobos os stages para uma nova comparação
+                                            setStage1(null)
+                                            setStage2(null)
+                                        }, 800)
+                                    }
+                                } else {
+                                    // se for a primeira imagem
+                                    setStage1(quadro.getId())
+                                }
+                                
+                                // vira o quadro
+                                quadro.virarImagem()
+                            }
+                            
+                        }}>
+                            <Quadro quadroInfos={quadro} />
+                        </Pressable>
                     ))}
                 </View>
             </View>

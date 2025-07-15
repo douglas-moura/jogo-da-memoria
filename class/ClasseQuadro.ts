@@ -1,25 +1,47 @@
 export default class ClasseQuadro {
-    public id: number | null
-    public img: string | null
+    private id: number
+    private codImg: string
+    private visivel: boolean = false
+    private aberto: boolean = false
 
-    constructor() {
-        this.id = null
-        this.img = null
+    constructor(id: number, img: string) {
+        this.id = id
+        this.codImg = img
     }
 
     public setId(id: number): void {
         this.id = id
     }
 
-    public getId(): number | null {
+    public getId(): number {
         return this.id
     }
 
-    public setImg(url: string): void {
-        this.img = url
+    public setCodImg(url: string): void {
+        this.codImg = url
     }
 
-    public getImg(): string | null {
-        return this.img
+    public getCodImg(): string {
+        return this.codImg
+    }
+
+    public setVisivel(): void {
+        this.visivel = !this.visivel
+    }
+
+    public getVisivel(): boolean {
+        return this.visivel
+    }
+
+    public setAberto(): void {
+        this.aberto = true
+    }
+
+    public getAberto(): boolean {
+        return this.aberto
+    }
+
+    public virarImagem(): void {
+        this.setVisivel()
     }
 }
