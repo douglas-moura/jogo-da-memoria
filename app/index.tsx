@@ -2,11 +2,12 @@ import { StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useState } from 'react'
 import { JogoProvider } from '../context/JogoContext'
-import Tabuleiro from '../assets/components/Tabuleiro'
 import TelaMenu from '../assets/components/TelaMenu'
 import MensagemParabens from '../assets/components/MensagemParabens'
-import ClassePartida from '../class/ClassePartida'
 import Cabecalho from '../assets/components/Cabecalho'
+import Tabuleiro from '../assets/components/Tabuleiro'
+import Rodape from '../assets/components/Rodape'
+import ClassePartida from '../class/ClassePartida'
 
 const p1 = new ClassePartida
 
@@ -22,6 +23,7 @@ export default function App() {
                     <Cabecalho />
                     <Tabuleiro grade={grade} />
                 </View>
+                <Rodape />
             </SafeAreaView>
         </JogoProvider>
     )
