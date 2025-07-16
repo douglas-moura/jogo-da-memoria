@@ -6,6 +6,7 @@ import Parabens from './parabens'
 import ClassePartida from '../class/ClassePartida'
 import Quadro from '../assets/components/Quadro'
 import numToTime from '../assets/functions/numToTime'
+import { calcularPontos } from '../assets/functions/calcularPontos'
 
 const p1 = new ClassePartida
 
@@ -15,8 +16,10 @@ export default function App() {
     const [stage1, setStage1] = useState<number | null>(null)
     const [stage2, setStage2] = useState<number | null>(null)
     const [acertos, setAcertos] = useState(0)
+    const [pontos, setPontos] = useState(0)
 
     useEffect(() => {
+        // setIntval não funcionou
         setTimeout(() => {
             setTempo(tempo + 1)
         }, 1000)
@@ -26,12 +29,14 @@ export default function App() {
 
     return (
         <SafeAreaView style={[styles.container, { flex: 1 }]} edges={['top', 'bottom']}>
-            {/*<Menu />*/}
-            { acertos >= 10 ? <Parabens /> : null }
+            {
+                /*<Menu />*/
+                acertos >= 10 ? <Parabens /> : null
+            }
             <View style={styles.jogoContainer}>
                 <View style={styles.partidaInfosContainer}>
                     <Text style={styles.infosTexto}>Tempo: {numToTime(tempo)}</Text>
-                    <Text style={styles.infosTexto}>Pontos: </Text>
+                    <Text style={styles.infosTexto}>Pontos: {pontos.toLocaleString('de-DE')}</Text>
                 </View>
                 <View style={styles.gradeContainer}>
                     {grade.map((quadro) => (
@@ -45,14 +50,16 @@ export default function App() {
                                     // se a imagem do quadro for igual a do stage porém com número de ID diferentes
                                     if (quadro.getCodImg() == grade[stage1].getCodImg() && quadro.getId() != grade[stage1].getId()) {
                                         // ACERTO
+                                        setPontos(calcularPontos(10000, pontos, tempo))
                                         // define ambos os quadros como resolvidos
                                         quadro.setAberto()
                                         if (stage1) grade[stage1].setAberto()
                                         // libera o stage um para inciar uma nova comparação
                                         setStage1(null)
-                                        setAcertos(acertos + 1)
+                                        setTimeout(() => { setAcertos(acertos + 1) }, 1000)
                                     } else {
                                         // ERRO
+                                        setPontos(calcularPontos(1000, pontos, tempo))
                                         // insere o segundo quadro no stage 2 para impedir um terceiro clique durante esta comparação
                                         setStage2(quadro.getId())
                                         setTimeout(() => {
