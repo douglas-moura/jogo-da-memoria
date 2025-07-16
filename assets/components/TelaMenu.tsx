@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native'
-import { useJogo } from '../context/JogoContext'
+import { useJogo } from '../../context/JogoContext'
 
-export default function Menu() {
+export default function TelaMenu() {
     const {
         start, setStart,
         acertos

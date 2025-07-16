@@ -3,8 +3,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useState } from 'react'
 import { JogoProvider } from '../context/JogoContext'
 import Tabuleiro from '../assets/components/Tabuleiro'
-import Menu from './menu'
-import Parabens from './parabens'
+import TelaMenu from '../assets/components/TelaMenu'
+import MensagemParabens from '../assets/components/MensagemParabens'
 import ClassePartida from '../class/ClassePartida'
 import Cabecalho from '../assets/components/Cabecalho'
 
@@ -16,8 +16,8 @@ export default function App() {
     return (
         <JogoProvider>
             <SafeAreaView style={[styles.container, { flex: 1 }]} edges={['top', 'bottom']}>
-                <Menu />
-                <Parabens />
+                <TelaMenu />
+                <MensagemParabens />
                 <View style={styles.jogoContainer}>
                     <Cabecalho />
                     <Tabuleiro grade={grade} />

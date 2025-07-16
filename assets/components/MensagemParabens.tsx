@@ -1,8 +1,8 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native'
 import * as Updates from 'expo-updates'
-import { useJogo } from '../context/JogoContext'
+import { useJogo } from '../../context/JogoContext'
 
-export default function Parabens() {
+export default function MensagemParabens() {
     const { acertos, pontos, tempo } = useJogo()
 
     if (acertos == 10) {
