@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useState, useEffect } from 'react'
 import Menu from './menu'
+import Parabens from './parabens'
 import ClassePartida from '../class/ClassePartida'
 import Quadro from '../assets/components/Quadro'
 import numToTime from '../assets/functions/numToTime'
@@ -13,17 +14,20 @@ export default function App() {
     const [grade, setGrade] = useState(p1.gerarGrade())
     const [stage1, setStage1] = useState<number | null>(null)
     const [stage2, setStage2] = useState<number | null>(null)
-    const [acertos, setAcertos] = useState(p1.getAcerto())    
+    const [acertos, setAcertos] = useState(0)
 
     useEffect(() => {
         setTimeout(() => {
             setTempo(tempo + 1)
         }, 1000)
+        //console.log('stage1: ', stage1)
+        //console.log('stage2: ', stage2)
     }, [tempo, stage1, stage2])
 
     return (
         <SafeAreaView style={[styles.container, { flex: 1 }]} edges={['top', 'bottom']}>
             {/*<Menu />*/}
+            { acertos >= 10 ? <Parabens /> : null }
             <View style={styles.jogoContainer}>
                 <View style={styles.partidaInfosContainer}>
                     <Text style={styles.infosTexto}>Tempo: {numToTime(tempo)}</Text>
@@ -40,20 +44,21 @@ export default function App() {
                                     // segunda imagem
                                     // se a imagem do quadro for igual a do stage porém com número de ID diferentes
                                     if (quadro.getCodImg() == grade[stage1].getCodImg() && quadro.getId() != grade[stage1].getId()) {
-                                        // acerto
+                                        // ACERTO
                                         // define ambos os quadros como resolvidos
                                         quadro.setAberto()
                                         if (stage1) grade[stage1].setAberto()
                                         // libera o stage um para inciar uma nova comparação
                                         setStage1(null)
+                                        setAcertos(acertos + 1)
                                     } else {
-                                        // erro
+                                        // ERRO
                                         // insere o segundo quadro no stage 2 para impedir um terceiro clique durante esta comparação
                                         setStage2(quadro.getId())
                                         setTimeout(() => {
                                             // oculta novamente as duas imagens diferentes
                                             quadro.virarImagem()
-                                            if (stage1) grade[stage1].virarImagem()
+                                            if (stage1 != null) grade[stage1].virarImagem()
                                             // libera amobos os stages para uma nova comparação
                                             setStage1(null)
                                             setStage2(null)
@@ -67,7 +72,6 @@ export default function App() {
                                 // vira o quadro
                                 quadro.virarImagem()
                             }
-                            
                         }}>
                             <Quadro quadroInfos={quadro} />
                         </Pressable>
