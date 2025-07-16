@@ -1,11 +1,25 @@
-import { StyleSheet, View, Text, Pressable, Image } from 'react-native'
+import { StyleSheet, View, Text, Pressable, Image, Animated } from 'react-native'
+import { useRef, useEffect } from 'react'
 import { useJogo } from '../../context/JogoContext'
 import { LinearGradient } from 'expo-linear-gradient'
 import { estilos } from '../style/style_global'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Rodape from './Rodape'
 
+
 export default function TelaMenu() {
+    const enterDown = useRef(new Animated.Value(1000)).current
+    
+    const move = () => {
+        Animated.timing(enterDown, {
+            toValue: 0, // move 100px pra baixo
+            duration: 800,
+            useNativeDriver: true,
+        }).start()
+    }
+
+    move()
+
     const {
         start, setStart,
         acertos
@@ -17,7 +31,7 @@ export default function TelaMenu() {
                 style={styles.iniciarContainer}
                 colors={['#AA3940', '#FF0011']}
             >
-                <View style={[styles.iniciarMenu, estilos().rounded_1x]}>
+                <Animated.View style={[styles.iniciarMenu, estilos().rounded_1x, { transform: [{ translateY: enterDown }]}]}>
                     <View style={{ flexDirection: 'column', marginTop: -80, alignItems: 'center' }}>
                         <View style={styles.logoContainer}>
                             <Image style={[styles.imgLogo, estilos().rounded_2x, { transform: 'rotate(16deg)', marginLeft: 40 } ]} source={ require('../img/luff.jpg') } />
@@ -30,7 +44,7 @@ export default function TelaMenu() {
                         <Icon name="play" style={styles.iconeBotaoIniciar} />
                         <Text style={styles.textoBotaoIniciar}>Iniciar</Text>
                     </Pressable>
-                </View>
+                </Animated.View>
             </LinearGradient>
         )
     } else {
