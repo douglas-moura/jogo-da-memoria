@@ -1,18 +1,25 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native'
 import * as Updates from 'expo-updates'
+import { useJogo } from '../context/JogoContext'
 
 export default function Parabens() {
-    return (
-        <Pressable style={styles.parabensContainer} onPress={() => { Updates.reloadAsync() }}>
-            <View style={styles.parabensMenu}>
-                <Text>Jogo da Memória - One Piece</Text>
-                <Pressable>
-                    <Text>Parabéns</Text>
-                </Pressable>
-            </View>
-            <View style={styles.pelicula}></View>
-        </Pressable>
-    )
+    const { acertos, pontos, tempo } = useJogo()
+
+    if (acertos == 10) {
+        return (
+            <Pressable style={styles.parabensContainer} onPress={() => { Updates.reloadAsync() }}>
+                <View style={styles.parabensMenu}>
+                    <Text>Jogo da Memória - One Piece</Text>
+                    <Pressable>
+                        <Text>Parabéns</Text>
+                    </Pressable>
+                </View>
+                <View style={styles.pelicula}></View>
+            </Pressable>
+        )
+    } else {
+        return null
+    }
 }
 
 const styles = StyleSheet.create({
