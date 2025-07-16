@@ -31,15 +31,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: 'yellow',
     },
-    mensagemContainer: {
-        flex: 1,
-        position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '120%',
-        width: '100%',
-        zIndex: 90
-    },
     jogoContainer: {
         padding: 12,
         width: '90%',
@@ -47,22 +38,5 @@ const styles = StyleSheet.create({
         margin: 'auto',
         backgroundColor: '#f6f6f6',
         borderRadius: 8,
-    },
-    partidaInfosContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginBottom: 12,
-    },
-    infosTexto: {
-        fontSize: 18,
-        fontWeight: 'bold'
-    },
-    gradeContainer: {
-        flexDirection: 'row',
-        flexWrap: 'wrap', // permite quebra de linha
-        justifyContent: 'space-between',
-    },
-    quadroContainer: {
-        width: '23.5%'
     }
 })
