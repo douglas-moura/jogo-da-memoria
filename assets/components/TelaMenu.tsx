@@ -6,7 +6,6 @@ import { estilos } from '../style/style_global'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Rodape from './Rodape'
 
-
 export default function TelaMenu() {
     const enterDown = useRef(new Animated.Value(1000)).current
     
@@ -27,17 +26,14 @@ export default function TelaMenu() {
 
     if (!start && acertos == 0) {
         return (
-            <LinearGradient
-                style={styles.iniciarContainer}
-                colors={['#AA3940', '#FF0011']}
-            >
+            <LinearGradient style={styles.iniciarContainer} colors={['#AA3940', '#FF0011']}>
                 <Animated.View style={[styles.iniciarMenu, estilos().rounded_1x, { transform: [{ translateY: enterDown }]}]}>
                     <View style={{ flexDirection: 'column', marginTop: -80, alignItems: 'center' }}>
                         <View style={styles.logoContainer}>
                             <Image style={[styles.imgLogo, estilos().rounded_2x, { transform: 'rotate(16deg)', marginLeft: 40 } ]} source={ require('../img/luff.jpg') } />
                             <Image style={[styles.imgLogo, estilos().rounded_2x, { transform: 'rotate(-16deg)', marginLeft: -40 }]} source={ require('../img/luff.jpg') } />
                         </View>
-                        <Text style={styles.logoTexto}>Jogo da Memória</Text>
+                        <Text style={{ fontFamily: 'Coiny-Regular', fontSize: 36, textAlign: 'center', marginTop: 48, }}>Jogo da Memória</Text>
                         <Text style={{}}>One Piece</Text>
                     </View>
                     <Pressable style={[styles.botaoIniciar, estilos().rounded_1x]} onPress={() => setTimeout(() => setStart(true), 500)}>
@@ -94,7 +90,7 @@ const styles = StyleSheet.create({
         marginTop: 58,
         fontSize: 36,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     botaoIniciar: {
         marginTop: 48,

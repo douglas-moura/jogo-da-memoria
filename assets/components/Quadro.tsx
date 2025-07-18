@@ -1,5 +1,5 @@
 import { View, Image, StyleSheet } from "react-native"
-import imagens from "../functions/imagensRequire"
+import imagens from "../helpers/imagensRequire"
 import ClasseQuadro from "../../class/ClasseQuadro"
 
 type Props = {
