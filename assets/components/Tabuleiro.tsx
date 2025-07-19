@@ -1,8 +1,9 @@
-import { View, Text, Pressable, StyleSheet } from "react-native"
+import { View, Pressable, StyleSheet } from "react-native"
 import { calcularPontos } from "../functions/calcularPontos"
 import { useJogo } from "../../context/JogoContext"
 import Quadro from "./Quadro"
 import ClasseQuadro from "../../class/ClasseQuadro"
+import { estilos } from "../style/style_global"
 
 type Props = {
     grade: Array<ClasseQuadro>
@@ -11,12 +12,18 @@ type Props = {
 export default function Tabuleiro({ grade }: Props) {
     const {
         tempo,
+        start,
         stage1, setStage1,
         stage2, setStage2,
         acertos, setAcertos,
         pontos, setPontos
     } = useJogo()
+
+    const stylesGlobal = estilos()    
     
+    // após 3 segundos, vira todas as imagens
+    tempo == 1 ? setTimeout(() => { grade.map((quadro) => ( quadro.virarImagem() )) }, 2000) : null
+
     return (
         <View style={styles.gradeContainer}>
             {grade.map((quadro) => (

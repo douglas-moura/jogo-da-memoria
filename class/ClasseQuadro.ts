@@ -1,9 +1,9 @@
 export default class ClasseQuadro {
     private id: number
     private codImg: string
-    private visivel: boolean = false
+    private visivel: boolean = true
     private aberto: boolean = false
-
+    
     constructor(id: number, img: string) {
         this.id = id
         this.codImg = img
