@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native"
 import { useJogo } from "../../context/JogoContext"
 import numToTime from "../functions/numToTime"
-import { estilos } from "../style/style_global"
+import { bordas, espacamentos } from "../style/style_global"
 
 export default function Cabecalho() {
     const {
@@ -9,10 +9,11 @@ export default function Cabecalho() {
         pontos
     } = useJogo()
 
-    const stylesGlobal = estilos()
+    const bordasGlobal = bordas()
+    const espacGlobal = espacamentos()
 
     return (
-        <View style={[styles.partidaInfosContainer, stylesGlobal.rounded_3x, stylesGlobal.padding_0x]}>
+        <View style={[styles.partidaInfosContainer, bordasGlobal.rounded_3x, espacGlobal.padding_0x]}>
             <Text style={styles.infosTexto}>Tempo: {numToTime(tempo)}</Text>
             <Text style={styles.infosTexto}>Pontos: {pontos.toLocaleString('de-DE')}</Text>
         </View>
