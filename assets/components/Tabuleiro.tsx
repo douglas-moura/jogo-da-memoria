@@ -9,6 +9,9 @@ type Props = {
     grade: Array<ClasseQuadro>
 }
 
+const bordasGlobal = bordas()
+const espacGlobal = espacamentos()
+
 export default function Tabuleiro({ grade }: Props) {
     const {
         tempo,
@@ -18,8 +21,6 @@ export default function Tabuleiro({ grade }: Props) {
         pontos, setPontos
     } = useJogo()
     
-    const bordasGlobal = bordas()
-    const espacGlobal = espacamentos() 
     
     // após 3 segundos, vira todas as imagens
     tempo == 1 ? setTimeout(() => { grade.map((quadro) => ( quadro.virarImagem() )) }, 2000) : null

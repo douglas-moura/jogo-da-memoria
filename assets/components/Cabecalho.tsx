@@ -3,17 +3,18 @@ import { useJogo } from "../../context/JogoContext"
 import numToTime from "../functions/numToTime"
 import { bordas, espacamentos } from "../style/style_global"
 
+const bordasGlobal = bordas()
+const espacGlobal = espacamentos()
+
 export default function Cabecalho() {
     const {
         tempo,
         pontos
     } = useJogo()
 
-    const bordasGlobal = bordas()
-    const espacGlobal = espacamentos()
 
     return (
-        <View style={[styles.partidaInfosContainer, bordasGlobal.rounded_3x, espacGlobal.padding_0x]}>
+        <View style={styles.partidaInfosContainer}>
             <Text style={styles.infosTexto}>Tempo: {numToTime(tempo)}</Text>
             <Text style={styles.infosTexto}>Pontos: {pontos.toLocaleString('de-DE')}</Text>
         </View>
@@ -26,6 +27,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: '#e6e6e6',
         marginBottom: 12,
+        borderRadius: bordasGlobal.rounded_3x.borderRadius,
+        padding: espacGlobal.padding_0x.padding,
     },
     infosTexto: {
         fontSize: 18,

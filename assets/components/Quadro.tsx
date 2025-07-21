@@ -1,17 +1,17 @@
 import { View, Image, StyleSheet } from "react-native"
 import imagens from "../helpers/imagensRequire"
 import ClasseQuadro from "../../class/ClasseQuadro"
-import { estilos } from "../style/style_global"
+import { bordas } from '../style/style_global'
 
 type Props = {
     quadroInfos: ClasseQuadro
 }
 
-const stylesGlobal = estilos()
+const bordasGlobal = bordas()
 
 export default function Quadro({ quadroInfos }: Props) {
     return (
-        <View style={[styles.quadroContainer, stylesGlobal.rounded_3x]}>
+        <View style={styles.quadroContainer}>
             <Image style={styles.img}
                 source={
                     quadroInfos.getCodImg() && quadroInfos.getVisivel() ?
@@ -32,6 +32,7 @@ const styles =  StyleSheet.create({
         borderWidth: 0,
         borderColor: 'red',
         flexDirection: 'column',
+        borderRadius: bordasGlobal.rounded_3x.borderRadius,
     },
     img: {
         margin: 'auto',
