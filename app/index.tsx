@@ -9,6 +9,7 @@ import TelaMenu from './screens/TelaMenu'
 import TelaJogo from './screens/TelaJogo'
 import TelaConfiguracoes from './screens/TelaConfiguracoes'
 import TelaRecordes from './screens/TelaRecordes'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const coresGlobal = cores()
 
@@ -18,12 +19,37 @@ const Tab = createBottomTabNavigator()
 /* Telas pricipais que ficarão nas abas inferiores */
 const Tabs = () => {
     return (
-        <Tab.Navigator screenOptions={{
+        <Tab.Navigator screenOptions={({ route }) => ({
             headerShown: false,
+            tabBarActiveTintColor: coresGlobal.primaria.color,                  // cor do ícone/texto ativo
+            tabBarInactiveTintColor: coresGlobal.primariaSombra.color,          // cor do ícone/texto inativo
             tabBarStyle: {
-                backgroundColor: coresGlobal.secundaria.backgroundColor
+                backgroundColor: coresGlobal.secundaria.backgroundColor,
+                borderTopWidth: 0,
+                elevation: 0,           // remove sombra no Android
+                shadowOpacity: 0, 
             },
-        }}>
+            tabBarLabelStyle: {
+                fontSize: 12,
+                fontWeight: '600',
+                fontFamily: 'Coiny-Regular'
+            },
+            tabBarIcon: ({ focused, color, size }) => {
+                let iconName: string
+
+                if (route.name === 'Inicio') {
+                    iconName = focused ? 'play' : 'play-outline'
+                } else if (route.name === 'Config') {
+                    iconName = focused ? 'settings' : 'settings-outline'
+                } else if (route.name === 'Recordes') {
+                    iconName = focused ? 'trophy' : 'trophy-outline'
+                } else {
+                    iconName = 'help-circle-outline'
+                }
+
+                return <Icon name={iconName} size={size} color={color} />
+            }
+        })}>
             <Tab.Screen name="Inicio" component={TelaMenu} />
             <Tab.Screen name="Config" component={TelaConfiguracoes} />
             <Tab.Screen name="Recordes" component={TelaRecordes} />

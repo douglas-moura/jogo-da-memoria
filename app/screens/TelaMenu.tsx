@@ -31,9 +31,7 @@ export default function TelaMenu({ navigation }: Props) {
 
     return (
         <SafeAreaView style={[styles.iniciarContainer]}>
-            <View style={styles.iniciarConfig}>
-                <Icon name="settings" style={styles.iconeBotaoConfig} />
-            </View>
+            <View style={styles.iniciarConfig}></View>
             <View style={styles.logoContainer}>
                 <Image style={[styles.imgLogo, {transform: 'rotate(16deg)', marginLeft: 0,}]} source={ require('../../assets/img/luff.jpg') } />
             </View>
