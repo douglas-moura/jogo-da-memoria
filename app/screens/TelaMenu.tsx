@@ -1,19 +1,21 @@
 import { StyleSheet, View, Text, Pressable, Image, Animated } from 'react-native'
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useJogo } from '../../context/JogoContext'
-import { LinearGradient } from 'expo-linear-gradient'
-import { bordas, espacamentos, cores } from '../style/style_global'
-import Icon from 'react-native-vector-icons/Ionicons'
-import Rodape from './Rodape'
+import { bordas, espacamentos, cores } from '../../assets/style/style_global'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const bordasGlobal = bordas()
 const espacGlobal = espacamentos()
 const coresGlobal = cores()
 
-export default function TelaMenu() {
-    const enterDown = useRef(new Animated.Value(1000)).current
+type Props = {
+    navigation: NativeStackNavigationProp<any>
+}
 
+export default function TelaMenu({ navigation }: Props) {
+    const enterDown = useRef(new Animated.Value(1000)).current
     
     const move = () => {
         Animated.timing(enterDown, {
@@ -25,31 +27,27 @@ export default function TelaMenu() {
 
     move()
 
-    const {
-        start, setStart,
-        acertos
-    } = useJogo()
+    const {setStart} = useJogo()
 
-    if (!start && acertos == 0) {
-        return (
-            <SafeAreaView style={[styles.iniciarContainer]}>
-                <View style={styles.iniciarConfig}>
-                    <Icon name="settings" style={styles.iconeBotaoConfig} />
-                </View>
-                <View style={styles.logoContainer}>
-                    <Image style={[styles.imgLogo, {transform: 'rotate(16deg)', marginLeft: 0,}]} source={ require('../img/luff.jpg') } />
-                </View>
-                <Animated.View style={{ transform: [{ translateY: enterDown }]}}>
-                    <Pressable style={styles.botaoIniciar} onPress={() => setTimeout(() => setStart(true), 500)}>
-                        <Icon name="play" style={styles.iconeBotaoIniciar} />
-                        <Text style={{ fontFamily: 'Coiny-Regular', fontSize: 24, color: '#fff' }}>Iniciar</Text>
-                    </Pressable>
-                </Animated.View>
-            </SafeAreaView>
-        )
-    } else {
-        return null
-    }
+    return (
+        <SafeAreaView style={[styles.iniciarContainer]}>
+            <View style={styles.iniciarConfig}>
+                <Icon name="settings" style={styles.iconeBotaoConfig} />
+            </View>
+            <View style={styles.logoContainer}>
+                <Image style={[styles.imgLogo, {transform: 'rotate(16deg)', marginLeft: 0,}]} source={ require('../../assets/img/luff.jpg') } />
+            </View>
+            <Animated.View style={{ transform: [{ translateY: enterDown }]}}>
+                <Pressable style={styles.botaoIniciar} onPress={() => {
+                        setTimeout(() => setStart(true), 500)
+                        setTimeout(() => navigation.navigate('TelaJogo'), 600)
+                    }}>
+                    <Icon name="play" style={styles.iconeBotaoIniciar} />
+                    <Text style={{ fontFamily: 'Coiny-Regular', fontSize: 24, color: '#fff' }}>Iniciar</Text>
+                </Pressable>
+            </Animated.View>
+        </SafeAreaView>
+    )
 }
 
 const styles = StyleSheet.create({

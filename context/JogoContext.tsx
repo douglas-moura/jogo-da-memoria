@@ -31,6 +31,8 @@ export function JogoProvider({ children }: { children: ReactNode }) {
     const [acertos, setAcertos] = useState(0)
     const [pontos, setPontos] = useState(0)
 
+    console.log(tempo)    
+
     useEffect(() => {
         // setIntval não funcionou
         if (start) {
@@ -41,8 +43,6 @@ export function JogoProvider({ children }: { children: ReactNode }) {
         if (acertos == 10) {
             setStart(false)
         }
-        //console.log('stage1: ', stage1)
-        //console.log('stage2: ', stage2)
     }, [start, acertos, tempo, stage1, stage2])
 
     return (
