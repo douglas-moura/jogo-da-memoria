@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 200,
+        height: 180,
         margin: 'auto',
         borderWidth: 2,
         borderRadius: bordasGlobal.rounded_0x.borderRadius,
@@ -78,13 +78,16 @@ const styles = StyleSheet.create({
         height: 220,
         backgroundColor: '#fff',
         overflow: 'hidden',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        padding: espacGlobal.padding_2x.padding,
         borderRadius: bordasGlobal.rounded_3x.borderRadius,
         transform: 'rotate(10deg)',
         elevation: 4,
     },
     cartaImg: {
         aspectRatio: 1,
-        marginVertical: 'auto'
+        marginVertical: 'auto',
     },
     imgLogo: {
         height: '100%',
