@@ -51,7 +51,7 @@ const Tabs = () => {
             }
         })}>
             <Tab.Screen name="Inicio" component={TelaMenu} />
-            <Tab.Screen name="Config" component={TelaConfiguracoes} />
+            {/*<Tab.Screen name="Config" component={TelaConfiguracoes} />*/}
             <Tab.Screen name="Recordes" component={TelaRecordes} />
         </Tab.Navigator>
     )

@@ -31,9 +31,12 @@ export default function TelaMenu({ navigation }: Props) {
 
     return (
         <SafeAreaView style={[styles.iniciarContainer]}>
-            <View style={styles.iniciarConfig}></View>
             <View style={styles.logoContainer}>
-                <Image style={[styles.imgLogo, {transform: 'rotate(16deg)', marginLeft: 0,}]} source={ require('../../assets/img/luff.jpg') } />
+                <View style={styles.carta}>
+                    <View  style={styles.cartaImg}>
+                        <Image style={styles.imgLogo} source={ require('../../assets/img/luff.jpg') } />
+                    </View>
+                </View>
             </View>
             <Animated.View style={{ transform: [{ translateY: enterDown }]}}>
                 <Pressable style={styles.botaoIniciar} onPress={() => {
@@ -59,37 +62,33 @@ const styles = StyleSheet.create({
         zIndex: 90,
         backgroundColor: coresGlobal.secundaria.color,
     },
-    iniciarConfig: {
-        padding: 16,
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    iconeBotaoConfig: {
-        fontSize: 40,
-        color: coresGlobal.primariaSombra.color,
-    },
     logoContainer: {
         aspectRatio: 1,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 250,
+        height: 200,
+        margin: 'auto',
         borderWidth: 2,
         borderRadius: bordasGlobal.rounded_0x.borderRadius,
         borderColor: coresGlobal.primariaSombra.color,
     },
-    imgLogo: {
-        elevation: 4,
-        marginHorizontal: 'auto',
-        position: 'absolute',
+    carta: {
         width: 150,
-        height: 180,
-        //borderWidth: 1,
-        //opacity: 0.2,
-        borderColor: '#f1f1f1',
-        borderRadius: bordasGlobal.rounded_2x.borderRadius,
+        height: 220,
+        backgroundColor: '#fff',
+        overflow: 'hidden',
+        borderRadius: bordasGlobal.rounded_3x.borderRadius,
+        transform: 'rotate(10deg)',
+        elevation: 4,
+    },
+    cartaImg: {
+        aspectRatio: 1,
+        marginVertical: 'auto'
+    },
+    imgLogo: {
+        height: '100%',
+        width: '100%'
     },
     botaoIniciar: {
         minWidth: '50%',
