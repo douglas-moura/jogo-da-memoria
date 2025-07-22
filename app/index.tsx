@@ -61,8 +61,9 @@ const Tabs = () => {
 const JogoRoutes = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name='AppMain' component={Tabs} />
+            <Stack.Screen name='TabMenu' component={Tabs} />
             <Stack.Screen name='TelaJogo' component={TelaJogo} />
+            <Stack.Screen name='Recordes' component={TelaRecordes} />
         </Stack.Navigator>
     )
 }
@@ -83,5 +84,4 @@ export default function App() {
             </JogoProvider>
         )
     }
-
 }

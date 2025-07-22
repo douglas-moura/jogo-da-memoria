@@ -27,7 +27,7 @@ export default function TelaMenu({ navigation }: Props) {
 
     move()
 
-    const {setStart} = useJogo()
+    const { setStart } = useJogo()
 
     return (
         <SafeAreaView style={[styles.iniciarContainer]}>

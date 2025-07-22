@@ -1,9 +1,9 @@
 import { View, Pressable, StyleSheet } from "react-native"
 import { calcularPontos } from "../functions/calcularPontos"
 import { useJogo } from "../../context/JogoContext"
+import { bordas, espacamentos } from "../style/style_global"
 import Quadro from "./Quadro"
 import ClasseQuadro from "../../class/ClasseQuadro"
-import { bordas, espacamentos } from "../style/style_global"
 
 type Props = {
     grade: Array<ClasseQuadro>

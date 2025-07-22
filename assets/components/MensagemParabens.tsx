@@ -5,20 +5,46 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import * as Updates from 'expo-updates'
 import Icon from 'react-native-vector-icons/Ionicons'
 import numToTime from '../functions/numToTime'
+import { useNavigation } from '@react-navigation/native'
 
 const bordasGlobal = bordas()
 const espacGlobal = espacamentos()
 const coresGlobal = cores()
 
-type Props = {
-    navigation: NativeStackNavigationProp<any>
+// Defina o tipo das rotas do seu stack
+type RootStackParamList = {
+    TabMenu: { screen?: string }; // <- aqui dizemos que TabMenu aceita um "screen" opcional
+    TelaJogo: undefined
+    Recordes: undefined
+    // adicione outras telas se necessário
 }
 
-export default function MensagemParabens({ navigation }: Props) {
-    const { acertos, pontos, tempo } = useJogo()
+export type RootTabParamList = {
+    Inicio: undefined
+    Recordes: undefined
+}
 
-    const reiniciar = () => {
-        navigation.navigate('TelaJogo')
+export default function MensagemParabens() {
+    const {
+        setStart,
+        acertos, setAcertos,
+        pontos, setPontos,
+        tempo, setTempo
+    } = useJogo()
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+
+    const reiniciarJogo = () => {
+        setStart(true)
+        setAcertos(0)
+        setPontos(0)
+        setTempo(0)
+    }
+
+    const finalizarJogo = () => {
+        setStart(false)
+        setAcertos(0)
+        setPontos(0)
+        setTempo(0)
     }
 
     if (acertos == 10) {
@@ -37,7 +63,16 @@ export default function MensagemParabens({ navigation }: Props) {
                         </View>
                     </View>
                     <View style={styles.linhaComandos}>
-                        <Pressable style={styles.iconeContainer} onPress={() => reiniciar() }>
+                        <Pressable style={styles.iconeContainer} onPress={() => {
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'TabMenu', params: { screen: 'Inicio' } }],
+                            })
+                            finalizarJogo()
+                        }}>
+                            <Icon name="home-outline" style={styles.iconeComando} />
+                        </Pressable>
+                        <Pressable style={styles.iconeContainer} onPress={() => reiniciarJogo() }>
                             <Icon name="reload" style={styles.iconeComando} />
                         </Pressable>
                         <Pressable style={styles.iconeContainer} onPress={() => navigation.navigate('Recordes')}>

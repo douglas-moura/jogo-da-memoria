@@ -1,8 +1,9 @@
 import { StyleSheet, View, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
 import { bordas, espacamentos, cores } from '../../assets/style/style_global'
+import { useJogo } from '../../context/JogoContext'
 import MensagemParabens from '../../assets/components/MensagemParabens'
 import Cabecalho from '../../assets/components/Cabecalho'
 import Tabuleiro from '../../assets/components/Tabuleiro'
@@ -17,10 +18,17 @@ const coresGlobal = cores()
 
 export default function TelaJogo() {
     const [grade, setGrade] = useState(p1.gerarGrade())
+    const { start } = useJogo()
 
     const [fontsLoaded] = useFonts({
         'Coiny-Regular': require('../../assets/fonts/Coiny-Regular.ttf'),
     })
+
+    useEffect(() => {
+        if (start) {
+            setGrade(p1.gerarGrade())
+        }
+    },[start])
 
     if (!fontsLoaded) {        
         return <View><Text>Carregando fontes...</Text></View>;
