@@ -26,9 +26,7 @@ export default function TelaRecordes() {
         const carregarHistorico = async () => {
             const historico = await buscarHistorico()
             const ordenado = historico.sort((a: ResultadoPartida, b: ResultadoPartida) => b.pontos - a.pontos)
-            
             setRecordes(ordenado)
-            console.log(recordes?.length == 0)
         }
 
         carregarHistorico()
@@ -79,7 +77,7 @@ export default function TelaRecordes() {
                             </View>
                         </View>
                         <FlatList data={recordes} renderItem={({item, index}) => (
-                                <View style={[styles.desempTabelaLinha, { backgroundColor: definirCor(index), }]}>
+                                <View style={[styles.desempTabelaLinha, { backgroundColor: definirCor(index) }]}>
                                     <View style={[styles.desempTabelaColuna, { width: '15%' }]}>
                                         {index < 3 ? <Icon name="trophy-outline" size={18} style={[styles.desempIcone, { backgroundColor: definirCor('i' + index) }]} /> : null}
                                     </View>
@@ -155,6 +153,5 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
         padding: espacamentos_global.padding_2x,
         borderRadius: bordas_global.rounded_0x
-
     }
 })

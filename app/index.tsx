@@ -19,12 +19,12 @@ const Tabs = () => {
     return (
         <Tab.Navigator screenOptions={({ route }) => ({
             headerShown: false,
-            tabBarActiveTintColor: cores_global.primaria._500,                  // cor do ícone/texto ativo
+            tabBarActiveTintColor: cores_global.primaria._500,              // cor do ícone/texto ativo
             tabBarInactiveTintColor: cores_global.primaria.sombra,          // cor do ícone/texto inativo
             tabBarStyle: {
                 backgroundColor: cores_global.secundaria._500,
                 borderTopWidth: 0,
-                elevation: 0,           // remove sombra no Android
+                elevation: 0,                                               // remove sombra no Android
                 shadowOpacity: 0,
                 height: 120
             },

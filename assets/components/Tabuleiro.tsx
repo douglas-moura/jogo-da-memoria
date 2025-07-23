@@ -17,7 +17,6 @@ export default function Tabuleiro({ grade }: Props) {
         pontos, setPontos
     } = useJogo()
     
-    
     // após 3 segundos, vira todas as imagens
     tempo == 1 ? setTimeout(() => { grade.map((quadro) => ( quadro.virarImagem() )) }, 2000) : null
 

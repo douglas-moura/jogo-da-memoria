@@ -29,9 +29,7 @@ export function JogoProvider({ children }: { children: ReactNode }) {
     const [stage1, setStage1] = useState<number | null>(null)
     const [stage2, setStage2] = useState<number | null>(null)
     const [acertos, setAcertos] = useState(0)
-    const [pontos, setPontos] = useState(0)
-
-    //console.log(tempo)    
+    const [pontos, setPontos] = useState(0) 
 
     useEffect(() => {
         // setIntval não funcionou

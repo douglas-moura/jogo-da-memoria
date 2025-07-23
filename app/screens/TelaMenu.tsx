@@ -10,7 +10,6 @@ type Props = {
     navigation: NativeStackNavigationProp<any>
 }
 
-
 export default function TelaMenu({ navigation }: Props) {
     const enterDown = useRef(new Animated.Value(1000)).current
     

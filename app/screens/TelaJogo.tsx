@@ -16,11 +16,9 @@ export default function TelaJogo() {
     const { start, acertos } = useJogo()
 
     useEffect(() => {
-        if (start) {
-            setGrade(p1.gerarGrade())
-        }
+        if (start) setGrade(p1.gerarGrade())
     },[start])
-    
+
     return (
         <SafeAreaView style={[styles.container, { flex: 1 }]} edges={['top', 'bottom']}>
             {acertos == 10 ? <MensagemParabens /> : null }
