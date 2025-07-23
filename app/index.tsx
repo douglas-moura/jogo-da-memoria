@@ -1,17 +1,15 @@
 import { View, Text } from 'react-native'
 import { JogoProvider } from '../context/JogoContext'
 import { useFonts } from 'expo-font'
-import { cores } from '../assets/style/style_global'
+import { cores_global } from '../assets/style/style_global'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import TelaMenu from './screens/TelaMenu'
 import TelaJogo from './screens/TelaJogo'
-import TelaConfiguracoes from './screens/TelaConfiguracoes'
 import TelaRecordes from './screens/TelaRecordes'
 import Icon from 'react-native-vector-icons/Ionicons'
-
-const coresGlobal = cores()
+//import TelaConfiguracoes from './screens/TelaConfiguracoes'
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -21,10 +19,10 @@ const Tabs = () => {
     return (
         <Tab.Navigator screenOptions={({ route }) => ({
             headerShown: false,
-            tabBarActiveTintColor: coresGlobal.primaria.color,                  // cor do ícone/texto ativo
-            tabBarInactiveTintColor: coresGlobal.primariaSombra.color,          // cor do ícone/texto inativo
+            tabBarActiveTintColor: cores_global.primaria._500,                  // cor do ícone/texto ativo
+            tabBarInactiveTintColor: cores_global.primaria.sombra,          // cor do ícone/texto inativo
             tabBarStyle: {
-                backgroundColor: coresGlobal.secundaria.backgroundColor,
+                backgroundColor: cores_global.secundaria._500,
                 borderTopWidth: 0,
                 elevation: 0,           // remove sombra no Android
                 shadowOpacity: 0, 

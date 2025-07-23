@@ -1,14 +1,10 @@
 import { StyleSheet, View, Text, Pressable, Image, Animated } from 'react-native'
 import { useRef } from 'react'
 import { useJogo } from '../../context/JogoContext'
-import { bordas, espacamentos, cores } from '../../assets/style/style_global'
+import { cores_global, espacamentos_global, bordas_global } from '../../assets/style/style_global'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import Icon from 'react-native-vector-icons/Ionicons'
-
-const bordasGlobal = bordas()
-const espacGlobal = espacamentos()
-const coresGlobal = cores()
 
 type Props = {
     navigation: NativeStackNavigationProp<any>
@@ -61,7 +57,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         zIndex: 90,
-        backgroundColor: coresGlobal.secundaria.color,
+        backgroundColor: cores_global.secundaria._500,
     },
     logoContainer: {
         aspectRatio: 1,
@@ -71,8 +67,8 @@ const styles = StyleSheet.create({
         height: 180,
         margin: 'auto',
         borderWidth: 2,
-        borderRadius: bordasGlobal.rounded_0x.borderRadius,
-        borderColor: coresGlobal.primariaSombra.color,
+        borderRadius: bordas_global.rounded_0x,
+        borderColor: cores_global.primaria.sombra,
     },
     carta: {
         width: 150,
@@ -81,8 +77,8 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: espacGlobal.padding_2x.padding,
-        borderRadius: bordasGlobal.rounded_3x.borderRadius,
+        padding: espacamentos_global.padding_2x,
+        borderRadius: bordas_global.rounded_3x,
         transform: 'rotate(10deg)',
         elevation: 4,
     },
@@ -99,9 +95,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: coresGlobal.primaria.backgroundColor,
-        borderRadius: bordasGlobal.rounded_0x.borderRadius,
-        padding: espacGlobal.padding_2x.padding,
+        backgroundColor: cores_global.primaria._500,
+        borderRadius: bordas_global.rounded_0x,
+        padding: espacamentos_global.padding_2x,
     },
     iconeBotaoIniciar: {
         fontSize: 24,

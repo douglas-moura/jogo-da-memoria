@@ -2,7 +2,7 @@ import { StyleSheet, View, Text } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useEffect, useState } from 'react'
 import { useFonts } from 'expo-font'
-import { bordas, espacamentos, cores } from '../../assets/style/style_global'
+import { cores_global, espacamentos_global, bordas_global } from '../../assets/style/style_global'
 import { useJogo } from '../../context/JogoContext'
 import MensagemParabens from '../../assets/components/MensagemParabens'
 import Cabecalho from '../../assets/components/Cabecalho'
@@ -11,10 +11,6 @@ import Rodape from '../../assets/components/Rodape'
 import ClassePartida from '../../class/ClassePartida'
 
 const p1 = new ClassePartida
-
-const bordasGlobal = bordas()
-const espacGlobal = espacamentos()
-const coresGlobal = cores()
 
 export default function TelaJogo() {
     const [grade, setGrade] = useState(p1.gerarGrade())
@@ -48,14 +44,14 @@ export default function TelaJogo() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: coresGlobal.primaria.backgroundColor,
+        backgroundColor: cores_global.secundaria._500,
     },
     jogoContainer: {
         width: '90%',
         height: 'auto',
         margin: 'auto',
         backgroundColor: '#f6f6f6',
-        borderRadius: bordasGlobal.rounded_1x.borderRadius,
-        padding: espacGlobal.padding_1x.padding,
+        borderRadius: bordas_global.rounded_1x,
+        padding: espacamentos_global.padding_1x,
     }
 })

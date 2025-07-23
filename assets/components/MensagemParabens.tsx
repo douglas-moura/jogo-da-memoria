@@ -1,17 +1,12 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native'
 import { useJogo } from '../../context/JogoContext'
-import { bordas, espacamentos, cores } from '../style/style_global'
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
-import * as Updates from 'expo-updates'
-import Icon from 'react-native-vector-icons/Ionicons'
-import numToTime from '../functions/numToTime'
+import { cores_global, bordas_global, espacamentos_global } from '../style/style_global'
 import { useNavigation } from '@react-navigation/native'
 import { salvarResultado } from '../functions/resultadosPartida'
 import { useState, useEffect } from 'react'
-
-const bordasGlobal = bordas()
-const espacGlobal = espacamentos()
-const coresGlobal = cores()
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import Icon from 'react-native-vector-icons/Ionicons'
+import numToTime from '../functions/numToTime'
 
 // Defina o tipo das rotas do seu stack
 type RootStackParamList = {
@@ -134,8 +129,8 @@ const styles = StyleSheet.create({
     parabensMenu: {
         width: 250,
         backgroundColor: '#fff',
-        padding: espacGlobal.padding_0x.padding,
-        borderRadius: bordasGlobal.rounded_1x.borderRadius,
+        padding: espacamentos_global.padding_0x,
+        borderRadius: bordas_global.rounded_1x,
         zIndex: 80,
         elevation: 10,
         marginTop: '-30%'
@@ -163,8 +158,8 @@ const styles = StyleSheet.create({
     },
     iconeContainer: {
         aspectRatio: 1,
-        borderRadius: bordasGlobal.rounded_0x.borderRadius,
-        backgroundColor: coresGlobal.primaria.color,
+        borderRadius: bordas_global.rounded_0x,
+        backgroundColor: cores_global.primaria._500,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
