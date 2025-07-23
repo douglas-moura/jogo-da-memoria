@@ -63,7 +63,6 @@ const JogoRoutes = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name='TabMenu' component={Tabs} />
             <Stack.Screen name='TelaJogo' component={TelaJogo} />
-            <Stack.Screen name='Recordes' component={TelaRecordes} />
         </Stack.Navigator>
     )
 }

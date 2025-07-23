@@ -9,9 +9,6 @@ type Props = {
     grade: Array<ClasseQuadro>
 }
 
-const bordasGlobal = bordas()
-const espacGlobal = espacamentos()
-
 export default function Tabuleiro({ grade }: Props) {
     const {
         tempo,

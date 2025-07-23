@@ -6,6 +6,8 @@ import * as Updates from 'expo-updates'
 import Icon from 'react-native-vector-icons/Ionicons'
 import numToTime from '../functions/numToTime'
 import { useNavigation } from '@react-navigation/native'
+import { salvarResultado } from '../functions/resultadosPartida'
+import { useState, useEffect } from 'react'
 
 const bordasGlobal = bordas()
 const espacGlobal = espacamentos()
@@ -15,7 +17,6 @@ const coresGlobal = cores()
 type RootStackParamList = {
     TabMenu: { screen?: string }; // <- aqui dizemos que TabMenu aceita um "screen" opcional
     TelaJogo: undefined
-    Recordes: undefined
     // adicione outras telas se necessário
 }
 
@@ -25,12 +26,17 @@ export type RootTabParamList = {
 }
 
 export default function MensagemParabens() {
+    const [finalizado, setFinalizado] = useState(false)
+    const [pontosFinal, setPontosFinal] = useState(0)
+    const [tempoFinal, setTempoFinal] = useState(0)
+
     const {
         setStart,
         acertos, setAcertos,
         pontos, setPontos,
         tempo, setTempo
     } = useJogo()
+
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
     const reiniciarJogo = () => {
@@ -47,45 +53,65 @@ export default function MensagemParabens() {
         setTempo(0)
     }
 
-    if (acertos == 10) {
-        return (
-            <View style={styles.parabensContainer}>
-                <View style={styles.parabensMenu}>
-                    <Text style={styles.titulo}>Parabéns</Text>
-                    <View style={styles.infosContainer}>
-                        <View style={styles.linhaInfo}>
-                            <Text style={styles.textInfo}>Pontuação:</Text>
-                            <Text style={[styles.textInfo, { fontWeight: 'bold' }]}>{pontos.toLocaleString('de-DE')}</Text>
-                        </View>
-                        <View style={styles.linhaInfo}>
-                            <Text style={styles.textInfo}>Tempo:</Text>
-                            <Text style={[styles.textInfo, { fontWeight: 'bold' }]}>{numToTime(tempo)}</Text>
-                        </View>
+    useEffect(() => {
+        if (acertos === 10 && !finalizado) {
+            salvarResultado({
+                data: new Date().toISOString(),
+                pontos,
+                tempo,
+            })
+            setPontosFinal(pontos)
+            setTempoFinal(tempo)
+            setFinalizado(true)
+        }
+    }, [acertos])
+
+    return (
+        <View style={styles.parabensContainer}>
+            <View style={styles.parabensMenu}>
+                <Text style={styles.titulo}>Parabéns</Text>
+                <View style={styles.infosContainer}>
+                    <View style={styles.linhaInfo}>
+                        <Text style={styles.textInfo}>Pontuação:</Text>
+                        <Text style={[styles.textInfo, { fontWeight: 'bold' }]}>{pontosFinal.toLocaleString('de-DE')}</Text>
                     </View>
-                    <View style={styles.linhaComandos}>
-                        <Pressable style={styles.iconeContainer} onPress={() => {
-                            navigation.reset({
-                                index: 0,
-                                routes: [{ name: 'TabMenu', params: { screen: 'Inicio' } }],
-                            })
-                            finalizarJogo()
-                        }}>
-                            <Icon name="home-outline" style={styles.iconeComando} />
-                        </Pressable>
-                        <Pressable style={styles.iconeContainer} onPress={() => reiniciarJogo() }>
-                            <Icon name="reload" style={styles.iconeComando} />
-                        </Pressable>
-                        <Pressable style={styles.iconeContainer} onPress={() => navigation.navigate('Recordes')}>
-                            <Icon name="ribbon-outline" style={styles.iconeComando} />
-                        </Pressable>
+                    <View style={styles.linhaInfo}>
+                        <Text style={styles.textInfo}>Tempo:</Text>
+                        <Text style={[styles.textInfo, { fontWeight: 'bold' }]}>{numToTime(tempoFinal)}</Text>
                     </View>
                 </View>
-                <View style={styles.pelicula}></View>
+                <View style={styles.linhaComandos}>
+                    <Pressable style={styles.iconeContainer} onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'TabMenu', params: { screen: 'Inicio' } }],
+                        })
+                        setFinalizado(false)
+                        finalizarJogo()
+                    }}>
+                        <Icon name="home-outline" style={styles.iconeComando} />
+                    </Pressable>
+                    <Pressable style={styles.iconeContainer} onPress={() => {
+                        setFinalizado(false)
+                        reiniciarJogo()
+                    }}>
+                        <Icon name="reload" style={styles.iconeComando} />
+                    </Pressable>
+                    <Pressable style={styles.iconeContainer} onPress={() => {
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'TabMenu', params: { screen: 'Recordes' } }],
+                        })
+                        setFinalizado(false)
+                        finalizarJogo()
+                    }}>
+                        <Icon name="ribbon-outline" style={styles.iconeComando} />
+                    </Pressable>
+                </View>
             </View>
-        )
-    } else {
-        return null
-    }
+            <View style={styles.pelicula} />
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -94,7 +120,7 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '100%',
         backgroundColor: '#000',
-        opacity: 0.7
+        opacity: 0.8
     },
     parabensContainer: {
         flex: 1,

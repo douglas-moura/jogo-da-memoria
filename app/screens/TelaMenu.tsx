@@ -14,6 +14,7 @@ type Props = {
     navigation: NativeStackNavigationProp<any>
 }
 
+
 export default function TelaMenu({ navigation }: Props) {
     const enterDown = useRef(new Animated.Value(1000)).current
     
@@ -24,7 +25,7 @@ export default function TelaMenu({ navigation }: Props) {
             useNativeDriver: true,
         }).start()
     }
-
+    
     move()
 
     const { setStart } = useJogo()

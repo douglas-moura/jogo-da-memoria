@@ -18,7 +18,7 @@ const coresGlobal = cores()
 
 export default function TelaJogo() {
     const [grade, setGrade] = useState(p1.gerarGrade())
-    const { start } = useJogo()
+    const { start, acertos } = useJogo()
 
     const [fontsLoaded] = useFonts({
         'Coiny-Regular': require('../../assets/fonts/Coiny-Regular.ttf'),
@@ -35,7 +35,7 @@ export default function TelaJogo() {
     } else {  
         return (
             <SafeAreaView style={[styles.container, { flex: 1 }]} edges={['top', 'bottom']}>
-                <MensagemParabens />
+                {acertos == 10 ? <MensagemParabens /> : null }
                 <View style={styles.jogoContainer}>
                     <Cabecalho />
                     <Tabuleiro grade={grade} />
@@ -44,7 +44,6 @@ export default function TelaJogo() {
             </SafeAreaView>
         )
     }
-
 }
 
 const styles = StyleSheet.create({
