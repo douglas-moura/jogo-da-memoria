@@ -4,7 +4,6 @@ import { buscarHistorico } from '../../assets/functions/resultadosPartida'
 import { useEffect, useState } from 'react'
 import { bordas_global, cores_global, espacamentos_global } from '../../assets/style/style_global'
 import { useFonts } from 'expo-font'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import numToTime from '../../assets/functions/numToTime'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Rodape from '../../assets/components/Rodape'
@@ -27,7 +26,9 @@ export default function TelaRecordes() {
         const carregarHistorico = async () => {
             const historico = await buscarHistorico()
             const ordenado = historico.sort((a: ResultadoPartida, b: ResultadoPartida) => b.pontos - a.pontos)
+            
             setRecordes(ordenado)
+            console.log(recordes?.length == 0)
         }
 
         carregarHistorico()
@@ -54,43 +55,6 @@ export default function TelaRecordes() {
                     <Icon style={styles.desempPaginaTituloIcone} name="trophy" />
                     <Text style={styles.desempPaginaTituloTexto}>Recordes</Text>
                 </View>
-                <View style={styles.desempTabela}>
-                    <View style={styles.desempTabelaLinha}>
-                        <View style={[styles.desempTabelaColuna, { width: '15%' }]}>
-                            <Icon name="trophy-outline" size={18} style={styles.desempIcone} />
-                        </View>
-                        <View style={[styles.desempTabelaColuna, { width: '30%' }]}>
-                            <Text style={[styles.desempTabelaLinhaHead, { textAlign: 'left' }]}>Data</Text>
-                        </View>
-                        <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
-                            <Text style={[styles.desempTabelaLinhaHead, { textAlign: 'right', width: '70%' }]}>Pontos</Text>
-                        </View>
-                        <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
-                            <Text style={[styles.desempTabelaLinhaHead, { textAlign: 'right', width: '60%' }]}>Tempo</Text>
-                        </View>
-                    </View>
-                    <FlatList data={recordes} renderItem={({item, index}) => (
-                            <View style={[styles.desempTabelaLinha, { backgroundColor: definirCor(index), }]}>
-                                <View style={[styles.desempTabelaColuna, { width: '15%' }]}>
-                                    {index < 3 ? <Icon name="trophy-outline" size={18} style={[styles.desempIcone, { backgroundColor: definirCor('i' + index) }]} /> : null}
-                                </View>
-                                <View style={[styles.desempTabelaColuna, { width: '30%' }]}>
-                                    <Text>{item.data.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'})}</Text>
-                                </View>
-                                <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
-                                    <Text style={{ textAlign: 'right', width: '70%' }}>{item.pontos.toLocaleString('de-DE')}</Text>
-                                </View>
-                                <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
-                                    <Text style={{ textAlign: 'right', width: '60%' }}>{numToTime(item.tempo)}</Text>
-                                </View>
-                            </View>
-                        )}
-                        keyExtractor={(item, index) => index.toString()}
-                    />
-                </View>
-                <View style={{ height: '10%', justifyContent: 'center', marginTop: 16 }}>
-                    <Rodape />
-                </View>
                 {/*
                 <Pressable onPress={async () => {
                     await AsyncStorage.removeItem('@historico_partidas')
@@ -98,6 +62,45 @@ export default function TelaRecordes() {
                     alert('Recordes apagados!')
                 }}><Text>Limpar Recordes</Text></Pressable>
                 */}
+                {recordes && recordes?.length > 0 ? (
+                    <View style={styles.desempTabela}>
+                        <View style={styles.desempTabelaLinha}>
+                            <View style={[styles.desempTabelaColuna, { width: '15%' }]}>
+                                <Icon name="trophy-outline" size={18} style={styles.desempIcone} />
+                            </View>
+                            <View style={[styles.desempTabelaColuna, { width: '30%' }]}>
+                                <Text style={[styles.desempTabelaLinhaHead, { textAlign: 'left' }]}>Data</Text>
+                            </View>
+                            <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
+                                <Text style={[styles.desempTabelaLinhaHead, { textAlign: 'right', width: '70%' }]}>Pontos</Text>
+                            </View>
+                            <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
+                                <Text style={[styles.desempTabelaLinhaHead, { textAlign: 'right', width: '60%' }]}>Tempo</Text>
+                            </View>
+                        </View>
+                        <FlatList data={recordes} renderItem={({item, index}) => (
+                                <View style={[styles.desempTabelaLinha, { backgroundColor: definirCor(index), }]}>
+                                    <View style={[styles.desempTabelaColuna, { width: '15%' }]}>
+                                        {index < 3 ? <Icon name="trophy-outline" size={18} style={[styles.desempIcone, { backgroundColor: definirCor('i' + index) }]} /> : null}
+                                    </View>
+                                    <View style={[styles.desempTabelaColuna, { width: '30%' }]}>
+                                        <Text>{item.data.toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit', year: 'numeric'})}</Text>
+                                    </View>
+                                    <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
+                                        <Text style={{ textAlign: 'right', width: '70%' }}>{item.pontos.toLocaleString('de-DE')}</Text>
+                                    </View>
+                                    <View style={[styles.desempTabelaColuna, { width: '25%' }]}>
+                                        <Text style={{ textAlign: 'right', width: '60%' }}>{numToTime(item.tempo)}</Text>
+                                    </View>
+                                </View>
+                            )}
+                            keyExtractor={(item, index) => index.toString()}
+                        />
+                    </View>
+                ) : <View style={styles.desempTabela}><Text style={{ padding: espacamentos_global.padding_1x }}>Sem recordes por enquanto...</Text></View> }
+                <View style={{ height: '10%', justifyContent: 'center', marginTop: 16 }}>
+                    <Rodape />
+                </View>                               
             </SafeAreaView>
         )
     }

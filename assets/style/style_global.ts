@@ -6,6 +6,7 @@ export const cores_global = {
     },
     secundaria: {
         _500: '#FFC500',
+        sombra: '#997600',
         reticula: '#FFF9E5',
     },
     cinza: {

@@ -25,10 +25,11 @@ const Tabs = () => {
                 backgroundColor: cores_global.secundaria._500,
                 borderTopWidth: 0,
                 elevation: 0,           // remove sombra no Android
-                shadowOpacity: 0, 
+                shadowOpacity: 0,
+                height: 120
             },
             tabBarLabelStyle: {
-                fontSize: 12,
+                fontSize: 18,
                 fontWeight: '600',
                 fontFamily: 'Coiny-Regular'
             },
@@ -45,7 +46,7 @@ const Tabs = () => {
                     iconName = 'help-circle-outline'
                 }
 
-                return <Icon name={iconName} size={size} color={color} />
+                return <Icon name={iconName} size={24} color={color} />
             }
         })}>
             <Tab.Screen name="Inicio" component={TelaMenu} />
