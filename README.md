@@ -40,7 +40,7 @@ npx expo start
 - Tente finalizar com o menor tempo possível!
 
 📁 Estrutura do projeto
-/
+
 ├── assets/
 │   ├── fonts/          # Fontes customizadas (Coiny, etc.)
 │   ├── img/            # Imagens usadas (logo, cartas)
