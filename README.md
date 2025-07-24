@@ -1,6 +1,7 @@
 # 🧠 Jogo da Memória
 
-Um jogo da memória simples e interativo desenvolvido com **React Native** usando **Expo**, onde o objetivo é encontrar os pares de cartas iguais com o menor número de tentativas possível.
+Jogo da Memória feito em React Native com Expo, utilizando navegação por abas e salvamento de progresso. Este projeto é um **jogo da memória temático do anime One Piece**, feito por um fã da obra.
+
 
 ## 🚀 Tecnologias utilizadas
 
@@ -15,16 +16,23 @@ Um jogo da memória simples e interativo desenvolvido com **React Native** usand
 
 ## 📁 Estrutura do projeto
 ```shell
+  ├── app/
+  │   ├── screens/        # Telas principais (TelaJogo, TelaRecordes…)
+  │   ├── index.tsx  
   ├── assets/
-  │   ├── fonts/          # Fontes customizadas (Coiny, etc.)
+  │   ├── functions/      # Funções utilitárias (numToTime, calcularPontos, etc.)
+  │   ├── helpers/
   │   ├── img/            # Imagens usadas (logo, cartas)
+  │   ├── fonts/          # Fontes customizadas (Coiny, etc.)
   │   └── components/     # Componentes reutilizáveis (TelaMenu, Rodape, etc.)
+  │   └── style/          
+  │       ├── index.tsx   # Arquivo contendo estilos, cores e espacamentos globais do projeto 
+  ├── class/              # Classes para gerar objetos Partida e Quadro
   ├── context/            # Context API (JogoContext)
-  ├── functions/          # Funções utilitárias (numToTime, storage)
-  ├── navigation/         # Navegação (Stack + Tabs)
-  ├── screens/            # Telas principais (TelaJogo, TelaRecordes…)
-  ├── App.tsx             # Entrypoint: configura navegação e providers
+  ├── App.tsx             # Entrypoint: busca o conteusdo em index.ts
   └── eas.json            # Configurações de build (EAS Build)
+  └── app.json            # Informações do Aplicativo
+  └── tsconfig.json       # Configurações do TypeScript
 ```
 
 ## 🔧 Como executar
