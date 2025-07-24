@@ -26,7 +26,7 @@ const Tabs = () => {
                 borderTopWidth: 0,
                 elevation: 0,                                               // remove sombra no Android
                 shadowOpacity: 0,
-                height: 120
+                height: 140
             },
             tabBarLabelStyle: {
                 fontSize: 18,
@@ -36,11 +36,11 @@ const Tabs = () => {
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName: string
 
-                if (route.name === 'Inicio') {
+                if (route.name === 'INíCIO') {
                     iconName = focused ? 'play' : 'play-outline'
                 } else if (route.name === 'Config') {
                     iconName = focused ? 'settings' : 'settings-outline'
-                } else if (route.name === 'Recordes') {
+                } else if (route.name === 'RECORDES') {
                     iconName = focused ? 'trophy' : 'trophy-outline'
                 } else {
                     iconName = 'help-circle-outline'
@@ -49,9 +49,9 @@ const Tabs = () => {
                 return <Icon name={iconName} size={24} color={color} />
             }
         })}>
-            <Tab.Screen name="Inicio" component={TelaMenu} />
+            <Tab.Screen name="INíCIO" component={TelaMenu} />
             {/*<Tab.Screen name="Config" component={TelaConfiguracoes} />*/}
-            <Tab.Screen name="Recordes" component={TelaRecordes} />
+            <Tab.Screen name="RECORDES" component={TelaRecordes} />
         </Tab.Navigator>
     )
 }

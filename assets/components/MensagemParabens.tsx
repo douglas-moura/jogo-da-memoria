@@ -79,7 +79,7 @@ export default function MensagemParabens() {
                     <Pressable style={styles.iconeContainer} onPress={() => {
                         navigation.reset({
                             index: 0,
-                            routes: [{ name: 'TabMenu', params: { screen: 'Inicio' } }],
+                            routes: [{ name: 'TabMenu', params: { screen: 'INÍCIO' } }],
                         })
                         setFinalizado(false)
                         finalizarJogo()
@@ -95,7 +95,7 @@ export default function MensagemParabens() {
                     <Pressable style={styles.iconeContainer} onPress={() => {
                         navigation.reset({
                             index: 0,
-                            routes: [{ name: 'TabMenu', params: { screen: 'Recordes' } }],
+                            routes: [{ name: 'TabMenu', params: { screen: 'RECORDES' } }],
                         })
                         setFinalizado(false)
                         finalizarJogo()

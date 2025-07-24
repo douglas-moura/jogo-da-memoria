@@ -4,7 +4,7 @@ import { cores_global } from "../style/style_global"
 export default function Rodape() {
     return (
         <View style={styles.container}>
-            <Text style={{ color: cores_global.secundaria.sombra }}>Criado por Douglas Moura</Text>
+            <Text style={{ color: cores_global.secundaria.sombra, fontSize: 12 }}>Desenvolvido por Douglas Moura</Text>
         </View>
     )
 }
