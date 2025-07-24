@@ -14,7 +14,7 @@ Um jogo da memória simples e interativo desenvolvido com **React Native** usand
 
 
 ## 📁 Estrutura do projeto
-  .
+```shell
   ├── assets/
   │   ├── fonts/          # Fontes customizadas (Coiny, etc.)
   │   ├── img/            # Imagens usadas (logo, cartas)
