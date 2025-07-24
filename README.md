@@ -15,13 +15,12 @@ Um jogo da memória simples e interativo desenvolvido com **React Native** usand
 ## 🔧 Como executar
 
 1. Clone o repositório:
-
 ```bash
 git clone https://github.com/douglas-moura/jogo-da-memoria
 cd jogo-da-memoria
+```
 
 2. Instale as dependências:
-
 ```bash
 npm install
 
