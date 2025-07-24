@@ -23,11 +23,13 @@ cd jogo-da-memoria
 2. Instale as dependências:
 ```bash
 npm install
+```
 
 3. Inicie o projeto:
 
 ```bash
 npx expo start
+```
 
 4. Escaneie o QR code com o aplicativo Expo Go no celular.
 
