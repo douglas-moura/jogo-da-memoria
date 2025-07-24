@@ -13,8 +13,8 @@ Um jogo da memória simples e interativo desenvolvido com **React Native** usand
 - 💾 AsyncStorage — para salvar recordes localmente
 
 
-📁 Estrutura do projeto
-
+## 📁 Estrutura do projeto
+  .
   ├── assets/
   │   ├── fonts/          # Fontes customizadas (Coiny, etc.)
   │   ├── img/            # Imagens usadas (logo, cartas)
@@ -47,14 +47,14 @@ npx expo start
 
 4. Escaneie o QR code com o aplicativo Expo Go no celular.
 
-🎮 Como jogar
+## 🎮 Como jogar
 - Toque em duas cartas para revelá-las.
 - Se forem iguais, o par será mantido aberto.
 - Se forem diferentes, elas se escondem novamente.
 - Tente finalizar com o menor tempo possível!
 
-📜 Licença
+## 📜 Licença
 Este projeto está licenciado sob a MIT License. Pode usar, contribuir e aprender à vontade!
 
-💻 Sobre o autor
+## 💻 Sobre o autor
 Desenvolvido por Douglas Moura — focado em Front‑End (React, React Native), Vue.js e soluções criativas. Sempre buscando novas formas de aprender e compartilhar 🧩.
