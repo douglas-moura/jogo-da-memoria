@@ -33,7 +33,7 @@ Jogo da Memória feito em React Native com Expo, utilizando navegação por abas
   ├── app.json            # Informações do Aplicativo
   └── tsconfig.json       # Configurações do TypeScript
 ```
-#
+
 ## 🔧 Como executar
 
 ### 1. Clone o repositório:
