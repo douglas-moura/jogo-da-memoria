@@ -9,7 +9,6 @@ Jogo da Memória feito em React Native com Expo, utilizando navegação por abas
 - ✨ TypeScript
 - 🎨 Expo: Fontes, gradiente e status bar
 - 🚦 React Navigation (stack + bottom tabs)
-- 🔁 Moti + Reanimated — para animações suaves
 - 📦 React Native Vector Icons — ícones estilizados
 - 💾 AsyncStorage — para salvar recordes localmente
 
