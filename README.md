@@ -12,6 +12,20 @@ Um jogo da memória simples e interativo desenvolvido com **React Native** usand
 - 📦 React Native Vector Icons — ícones estilizados
 - 💾 AsyncStorage — para salvar recordes localmente
 
+
+📁 Estrutura do projeto
+
+  ├── assets/
+  │   ├── fonts/          # Fontes customizadas (Coiny, etc.)
+  │   ├── img/            # Imagens usadas (logo, cartas)
+  │   └── components/     # Componentes reutilizáveis (TelaMenu, Rodape, etc.)
+  ├── context/            # Context API (JogoContext)
+  ├── functions/          # Funções utilitárias (numToTime, storage)
+  ├── navigation/         # Navegação (Stack + Tabs)
+  ├── screens/            # Telas principais (TelaJogo, TelaRecordes…)
+  ├── App.tsx             # Entrypoint: configura navegação e providers
+  └── eas.json            # Configurações de build (EAS Build)
+
 ## 🔧 Como executar
 
 1. Clone o repositório:
@@ -38,19 +52,6 @@ npx expo start
 - Se forem iguais, o par será mantido aberto.
 - Se forem diferentes, elas se escondem novamente.
 - Tente finalizar com o menor tempo possível!
-
-📁 Estrutura do projeto
-
-├── assets/
-│   ├── fonts/          # Fontes customizadas (Coiny, etc.)
-│   ├── img/            # Imagens usadas (logo, cartas)
-│   └── components/     # Componentes reutilizáveis (TelaMenu, Rodape, etc.)
-├── context/            # Context API (JogoContext)
-├── functions/          # Funções utilitárias (numToTime, storage)
-├── navigation/         # Navegação (Stack + Tabs)
-├── screens/            # Telas principais (TelaJogo, TelaRecordes…)
-├── App.tsx             # Entrypoint: configura navegação e providers
-└── eas.json            # Configurações de build (EAS Build)
 
 📜 Licença
 Este projeto está licenciado sob a MIT License. Pode usar, contribuir e aprender à vontade!
