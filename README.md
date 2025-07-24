@@ -29,24 +29,24 @@ Um jogo da memória simples e interativo desenvolvido com **React Native** usand
 
 ## 🔧 Como executar
 
-# 1. Clone o repositório:
+### 1. Clone o repositório:
 ```bash
 git clone https://github.com/douglas-moura/jogo-da-memoria
 cd jogo-da-memoria
 ```
 
-# 2. Instale as dependências:
+### 2. Instale as dependências:
 ```bash
 npm install
 ```
 
-# 3. Inicie o projeto:
+### 3. Inicie o projeto:
 
 ```bash
 npx expo start
 ```
 
-# 4. Escaneie o QR code com o aplicativo Expo Go no celular.
+### 4. Escaneie o QR code com o aplicativo Expo Go no celular.
 
 ## 🎮 Como jogar
 - Toque em duas cartas para revelá-las.
