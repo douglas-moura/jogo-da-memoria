@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "jogo-da-memoria",
+    "name": "Jogo da Memória",
     "slug": "jogo-da-memoria",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFC500"
     },
     "ios": {
       "supportsTablet": true
@@ -18,15 +18,22 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FFC500"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.doug_moura.jogodamemoria"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c6b610db-9b49-4283-aaab-9f8745885cf1"
+      }
+    },
+    "owner": "doug_moura"
   }
 }

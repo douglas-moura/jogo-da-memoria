@@ -28,11 +28,7 @@ export default function TelaMenu({ navigation }: Props) {
     return (
         <SafeAreaView style={[styles.iniciarContainer]}>
             <View style={styles.logoContainer}>
-                <View style={styles.carta}>
-                    <View  style={styles.cartaImg}>
-                        <Image style={styles.imgLogo} source={ require('../../assets/img/luff.jpg') } />
-                    </View>
-                </View>
+                <Image style={styles.imgLogo} source={ require('../../assets/img/logo.png') } />
             </View>
             <Animated.View style={{ transform: [{ translateY: enterDown }]}}>
                 <Pressable style={styles.botaoIniciar} onPress={() => {
@@ -63,31 +59,15 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 180,
+        height: 250,
         margin: 'auto',
         borderWidth: 2,
         borderRadius: bordas_global.rounded_0x,
         borderColor: cores_global.primaria.sombra,
     },
-    carta: {
-        width: 150,
-        height: 220,
-        backgroundColor: '#fff',
-        overflow: 'hidden',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        padding: espacamentos_global.padding_2x,
-        borderRadius: bordas_global.rounded_3x,
-        transform: 'rotate(10deg)',
-        elevation: 4,
-    },
-    cartaImg: {
-        aspectRatio: 1,
-        marginVertical: 'auto',
-    },
     imgLogo: {
-        height: '100%',
-        width: '100%'
+        height: '120%',
+        width: '120%'
     },
     botaoIniciar: {
         minWidth: '50%',

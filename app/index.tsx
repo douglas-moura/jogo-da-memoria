@@ -31,7 +31,7 @@ const Tabs = () => {
             tabBarLabelStyle: {
                 fontSize: 18,
                 fontWeight: '600',
-                fontFamily: 'Coiny-Regular'
+                fontFamily: 'Coiny-Regular',
             },
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName: string
