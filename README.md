@@ -17,23 +17,23 @@ Jogo da Memória feito em React Native com Expo, utilizando navegação por abas
 ```shell
   ├── app/
   │   ├── screens/        # Telas principais (TelaJogo, TelaRecordes…)
-  │   ├── index.tsx  
+  │   └── index.tsx       # Núcleo do Jogo, onde as telas são carregadas, navegação e fontes são configuradas 
   ├── assets/
   │   ├── functions/      # Funções utilitárias (numToTime, calcularPontos, etc.)
-  │   ├── helpers/
+  │   ├── helpers/        # Arquivos para auxilio de funções (imagensRequire)
   │   ├── img/            # Imagens usadas (logo, cartas)
   │   ├── fonts/          # Fontes customizadas (Coiny, etc.)
   │   └── components/     # Componentes reutilizáveis (TelaMenu, Rodape, etc.)
   │   └── style/          
-  │       ├── index.tsx   # Arquivo contendo estilos, cores e espacamentos globais do projeto 
+  │       └── index.tsx   # Arquivo contendo estilos, cores e espacamentos globais do projeto 
   ├── class/              # Classes para gerar objetos Partida e Quadro
   ├── context/            # Context API (JogoContext)
   ├── App.tsx             # Entrypoint: busca o conteusdo em index.ts
-  └── eas.json            # Configurações de build (EAS Build)
-  └── app.json            # Informações do Aplicativo
+  ├── eas.json            # Configurações de build (EAS Build)
+  ├── app.json            # Informações do Aplicativo
   └── tsconfig.json       # Configurações do TypeScript
 ```
-
+#
 ## 🔧 Como executar
 
 ### 1. Clone o repositório:
